@@ -4,18 +4,20 @@ import { SignInForm } from '@renderer/components/forms/signin.form'
 import { IRSignIn } from '@renderer/interfaces/auth.interface'
 import { Images } from '@renderer/utility/images'
 import { HotToast } from '@renderer/components/toaster'
+import { useNavigate } from 'react-router-dom'
 
 export const SignIn: React.FC = (): JSX.Element => {
+  const navigate = useNavigate()
   const [isLoading, setLoading] = useState<boolean>(false)
 
   /** handle form submission */
   const handleSubmit = async (data: IRSignIn): Promise<void> => {
     setLoading(true)
-    HotToast.Success({ message: 'Logged in to account' })
-    HotToast.Error({ message: 'Invalid signing credentials.' })
     setTimeout(() => {
       console.log(data)
+      HotToast.Success({ message: 'Logged in to account' })
       setLoading(false)
+      navigate('/dashboard')
     }, 1500)
   }
 

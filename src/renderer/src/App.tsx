@@ -5,6 +5,7 @@ import { SignIn } from './pages/auth/signin'
 import { MainLayout } from './layouts/main.layout'
 import { SignUp } from './pages/auth/signup'
 import { Reset } from './pages/auth/reset'
+import { permittedRoutes } from './routes'
 
 const App: React.FC = (): JSX.Element => {
   const mainRoutes = {
@@ -18,7 +19,7 @@ const App: React.FC = (): JSX.Element => {
     ]
   }
 
-  const routing = useRoutes([mainRoutes])
+  const routing = useRoutes([mainRoutes, ...permittedRoutes()])
 
   return (
     <>
